@@ -1,0 +1,13 @@
+.DS_Store
+.actionScriptProperties
+.flexLibProperties
+.project
+*.iml
+local.properties
+.idea/
+.settings/
+bin-debug/
+bin-release/
+html-template/
+libs/RenderIn3D.swf
+bin/*
