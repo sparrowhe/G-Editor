@@ -53,7 +53,7 @@ public class Translator {
 				}
 			}
 		}
-		languages = [['en', 'English']]; // English is always the first entry
+		languages = [['zh-cn', '默认语言']]; // Chinese is always the first entry
 		Scratch.app.server.getLanguageList(saveLanguageList);
 	}
 

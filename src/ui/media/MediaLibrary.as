@@ -320,7 +320,7 @@ spriteFeaturesFilter.visible = false; // disable features filter for now
 			addScratchExtensions();
 			return;
 		}
-		if (!libraryCache) app.server.getMediaLibrary(gotLibraryData);
+		if (!libraryCache) app.server.getMediaLibrary(assetType, gotLibraryData);
 		else collectEntries();
 	}
 

@@ -99,7 +99,7 @@ import watchers.ListWatcher;
 
 public class Scratch extends Sprite {
 	// Version
-	public static const versionString:String = '1.3-a-2.3';//版本号
+	public static const versionString:String = '1.3-s-3.1';//版本号
 	public static var app:Scratch; // static reference to the app, used for debugging
 
 	// Display modes
@@ -110,7 +110,7 @@ public class Scratch extends Sprite {
 	public var isIn3D:Boolean;
 	public var render3D:IRenderIn3D;
 	public var isArmCPU:Boolean;
-	public var jsEnabled:Boolean = false; // true when the SWF can talk to the webpage
+	public var jsEnabled:Boolean = true; // true when the SWF can talk to the webpage
 
 	// Runtime
 	public var runtime:ScratchRuntime;
@@ -130,7 +130,7 @@ public class Scratch extends Sprite {
 	private var viewedObject:ScratchObj;
 	private var lastTab:String = 'scripts';
 	protected var wasEdited:Boolean; // true if the project was edited and autosaved
-	private var _usesUserNameBlock:Boolean = false;
+	private var _usesUserNameBlock:Boolean = true;
 	protected var languageChanged:Boolean; // set when language changed
 
 	// UI Elements
@@ -780,15 +780,15 @@ public class Scratch extends Sprite {
 	//------------------------------
 	public function showFileMenu(b:*):void {
 		var m:Menu = new Menu(null, 'File', CSS.topBarColor, 28);
-		m.addItem('载入扩展', function():void {
+		m.addItem('载入JS扩展', function():void {
 			function loadJSExtension(dialog:DialogBox):void {
 				var url:String = dialog.getField('URL').replace(/^\s+|\s+$/g, '');
 				if (url.length == 0) return;
 				externalCall('ScratchExtensions.loadExternalJS', null, url);
 			}
 			var d:DialogBox = new DialogBox(loadJSExtension);
-			d.addTitle('Load Javascript Scratch Extension');
-			d.addField('URL', 120);
+			d.addTitle('载入JS扩展');
+			d.addField('链接', 120);
 			d.addAcceptCancelButtons('Load');
 			d.showOnStage(app.stage);
 		});
@@ -825,15 +825,15 @@ public class Scratch extends Sprite {
 		}
 		if (b.lastEvent.shiftKey && jsEnabled) {
 			m.addLine();
-			m.addItem('Import experimental extension', function():void {
+			m.addItem('加载HTTP扩展', function():void {
 				function loadJSExtension(dialog:DialogBox):void {
-					var url:String = dialog.getField('URL').replace(/^\s+|\s+$/g, '');
+					var url:String = dialog.getField('链接').replace(/^\s+|\s+$/g, '');
 					if (url.length == 0) return;
 					externalCall('ScratchExtensions.loadExternalJS', null, url);
 				}
 				var d:DialogBox = new DialogBox(loadJSExtension);
-				d.addTitle('加载JavaScript扩展');
-				d.addField('扩展地址', 120);
+				d.addTitle('加载HTTP扩展');
+				d.addField('链接', 120);
 				d.addAcceptCancelButtons('Load');
 				d.showOnStage(app.stage);
 			});

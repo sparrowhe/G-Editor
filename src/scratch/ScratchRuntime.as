@@ -386,15 +386,17 @@ public class ScratchRuntime {
 			fileName = file.name;
 			data = file.data;
 			if (app.stagePane.isEmpty()) doInstall();
-			else DialogBox.confirm('Replace contents of the current project?', app.stage, doInstall);
+			else DialogBox.confirm('是否保存该项目?', app.stage, doInstall);
 		}
 		function doInstall(ignore:* = null):void {
 			installProjectFromFile(fileName, data);
 		}
 		stopAll();
-		var filter1:FileFilter = new FileFilter('Scratch 1.4 Project', '*.sb');
-		var filter2:FileFilter = new FileFilter('Scratch 2 Project', '*.sb2');
-		Scratch.loadSingleFile(fileLoadHandler, [filter1, filter2])
+		var filter1:FileFilter = new FileFilter('所有文件', '*.*');
+		var filter2:FileFilter = new FileFilter('Scratch 1.x 作品文件', '*.sb');
+		var filter3:FileFilter = new FileFilter('Scratch2 作品文件', '*.sb2');
+		var filter4:FileFilter = new FileFilter('G-Editor 作品文件(开发中)', '*.gep');
+		Scratch.loadSingleFile(fileLoadHandler, [filter1, filter2,filter3,filter4])
 	}
 
 	public function installProjectFromFile(fileName:String, data:ByteArray):void {

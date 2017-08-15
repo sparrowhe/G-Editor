@@ -146,7 +146,7 @@ public class LibraryPart extends UIPart {
 
 		libraryButton.x = 380;
 		if (app.stageIsContracted) libraryButton.x =138;
-		libraryButton.y = buttonY + 20000;//原来是0 为了隐藏按钮将按钮移出边界外
+		libraryButton.y = buttonY + 0;//原来是0 为了隐藏按钮将按钮移出边界外
 		paintButton.x = libraryButton.x + libraryButton.width + 3;
 		paintButton.y = buttonY + 1;
 		importButton.x = paintButton.x + paintButton.width + 4;
